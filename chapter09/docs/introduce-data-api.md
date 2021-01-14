@@ -23,31 +23,45 @@
 
 1. 회원가입을 한 후 로그인을 합니다.
 
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter09/images/data-application-1.png" style="max-width:350px;max-height:400px">
+
 2. 활용할 API를 키워드, 검색 조건 등을 이용하여 검색합니다.
+
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter09/images/data-application-2.png" style="max-width:350px;max-height:400px">
 
 3. 검색 결과 중 오픈 API 탭을 클릭합니다. (오픈 API로 제공하는 데이터만 활용 신청이 가능.)
 
-4. API로 활용하고 싶은 데이터를 클릭합니다.
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter09/images/data-application-3.png" style="max-width:350px;max-height:400px">
 
-5. 오른쪽 상단의 활용신청 버튼을 클릭합니다.
+4. API로 활용하고 싶은 데이터를 클릭하여 상세보기 페이지에서 오른쪽 상단의 활용신청 버튼을 클릭합니다.
 
-6. 필수항목인 활용목적을 입력한 후 제공하는 상세기능정보를 선택한 후 하단의 활용신청 버튼을 클릭합니다.
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter09/images/data-application-4.png" style="max-width:350px;max-height:400px">
 
-7. 신청이 완료되면 상단에 완료 되었다는 안내창이 뜹니다. 확인을 누른 후 창을 닫아 줍니다.
+5. 필수항목인 활용목적을 입력한 후 제공하는 상세기능정보를 선택한 후 하단의 활용신청 버튼을 클릭합니다.
 
-8. 마이페이지 > 오픈 API > 개발계정 메뉴에서 신청한 API 목록을 볼 수 있습니다.
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter09/images/data-application-5.png" style="max-width:350px;max-height:400px">
+
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter09/images/data-application-5-1.png" style="max-width:350px;max-height:400px">
+
+6. 신청이 완료되면 상단에 완료 되었다는 안내창이 뜹니다. 확인을 누른 후 창을 닫아 줍니다.
+
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter09/images/data-application-6.png" style="max-width:350px;max-height:400px">
+
+7. 마이페이지 > 오픈 API > 개발계정 메뉴에서 신청한 API 목록을 볼 수 있습니다.
+
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter09/images/data-application-7.png" style="max-width:350px;max-height:400px">
 
 ## 개발계정 상세보기
 
 마이페이지 > 오픈 API > 개발계정 메뉴에서 사용할 API를 선택합니다.
 <br>개발계정 상세보기 페이지에서 서비스유형, 일반인증키, end point, 데이터 포맷 등을 확인 할 수 있습니다.
 
-<img>
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter09/images/data-accunt-view-1.png" style="max-width:350px;max-height:400px">
 
 활용신청 상세기능정보에서 어떤 정보들을 전달하는지, 일일 트래픽, 미리보기등으로 상세한 API 정보를 알 수 있습니다.
-<br> 어떤 변수를 요청하여 데이터를 얻을 수 있는지에 대한 정보를 알 수 있습니다.
+<br>확인 버튼을 클릭하면 어떤 변수를 요청하여 데이터를 얻을 수 있는지에 대한 정보를 알 수 있습니다.
 
-<img>
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter09/images/data-accunt-view-2.png" style="max-width:350px;max-height:400px">
 
 ## API 요청 실습
 
@@ -79,16 +93,5 @@ $ node api-test.js
 <img>
 
 이번에는 위의 코드를 api를 요청하여 결과 값을 반환하는 코드로 정의합니다.
-
-
-
-
-
-
-
-
-
-
-<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter07/images/react-main.png" style="max-width:350px;max-height:400px">
 
 
