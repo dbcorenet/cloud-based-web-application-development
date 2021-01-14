@@ -1,0 +1,21 @@
+/* 숫자 연산 */
+
+.box1 {
+  width: 100px/2;
+  height: (500px/2);
+  margin-left: 5px + 8px/2px;
+}
+
+/* 문자열 연산 */
+
+p:before {
+  content : "FOO" + Bar;
+  font-family : sans- + "serif";
+}
+
+/* 변수 삽입 */
+p {
+  $font-size : 12px;
+  $line-height : 30px;
+  font : #{$font-size}/#{$line-height};
+}
