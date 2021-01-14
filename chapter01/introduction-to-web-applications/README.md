@@ -15,9 +15,9 @@ A web application (or web app) is application software that runs on a web server
 ![Web site vs Web application](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter01/images/Website-vs-Web-Application.png)
 
 
-||웹 사이트|웹 애플리케이션|
-|---|---|---|---|
-|목적| 사용자에게 정보제공 | 사용자와 상호작용|
-|특징 및 장점| 간편한 접근과 정보 업데이트, 시간절약 및 비용절감, 광고 간소화 제공| 개인화된 경험과 확장성, 다양한 디바이스 제공 가능|
-|주요 요소| HTML(Hypertext Markup Language), CSS (Cascading Style Sheets), JavaScripts | HTML, CSS, JavaScript 그리고 Python, Node.js, Ruby, Java 등 프로그래밍 언어와 Django, Ruby on Rails, Express, Spring framework 와 Database 필요 
-|예| wikipedia.com, hibrain.net, changwon.ac.kr, changwon.ac.kr/ce/ | Youtube, Twitter, Instagram, Facebook, Photoshop|
+| | 웹 사이트 | 웹 애플리케이션 |
+|---|---|---|
+| 목적 | 사용자에게 정보제공 | 사용자와 상호작용|
+| 특징 | 간편한 접근과 정보 업데이트, 시간절약 및 비용절감, 광고 간소화 제공 | 개인화된 경험과 확장성, 다양한 디바이스 제공 가능|
+| 요소 | HTML(Hypertext Markup Language), CSS (Cascading Style Sheets), JavaScripts | HTML, CSS, JavaScript 그리고 Python, Node.js, Ruby, Java 등 프로그래밍 언어와 Django, Ruby on Rails, Express, Spring framework 와 Database 필요 |
+| 예 | wikipedia.com, hibrain.net, changwon.ac.kr, changwon.ac.kr/ce/ | Youtube, Twitter, Instagram, Facebook, Photoshop|
