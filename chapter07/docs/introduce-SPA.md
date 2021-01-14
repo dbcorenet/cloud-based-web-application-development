@@ -309,6 +309,9 @@ function App() {
 export default App;
 ```
 
+
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter07/images/react-className.png" style="max-width:350px;max-height:400px">
+
 #### 주석
 
 JSX 안에서 주석을 작성하는 방법은 일반 자바스크립트에서 주석을 작성할 때와 조금 다릅니다.
@@ -381,4 +384,4 @@ export default App;
 
 위의 예제를 실행하면 아래처럼 App.js에서 전달한 React 값이 MyComponent 에 전달되어 출력되는 것을 확인 할 수 있습니다.
 
-<img>
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter07/images/react-component-props.png" style="max-width:350px;max-height:400px">
