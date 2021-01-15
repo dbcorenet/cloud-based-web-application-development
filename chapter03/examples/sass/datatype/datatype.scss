@@ -1,0 +1,12 @@
+$name: foo;
+$attr: border;
+$color:#ff0000;
+$value :10px 2px 5px 10px;
+$font:"lucida Grande", sans-serif;
+
+p.#{$name} {
+  #{$attr}-color: $color;
+  margin:$value;
+  font-family: $font;
+}
+
