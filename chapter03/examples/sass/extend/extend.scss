@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.box1 {
+    height: 300px;
+    text-align: center;
+    padding-top: 50px;
+    color: #fff;
+    background: {
+        color: red;
+        repeat: no-repeat;
+        size: cover;
+        position: center;
+    }
+    h1 {
+        font-size: 65px;
+        text-transform: capitalize;
+    }
+    p {
+        width: 800px;
+        margin: 20px auto;
+    }
+}
+
+.box2 {
+    @extend .box1;
+    padding-top: 70px;
+    h1 {
+        font-size: 45px;
+    }
+    background-color: blue;
+    p {
+        width: 500px;
+    }
+}
+
+.box3 {
+    @extend .box2;
+    h1 {
+        font-size: 80px;
+    }
+    background-color: yellow;
+    text-shadow: 2px 2px 5px #000;
+}

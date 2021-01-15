@@ -1,0 +1,26 @@
+@mixin boldtext {
+  font:{
+    family: 'Malgun Gothic', sans-serif; 
+    weight:bold;
+    size:42px;
+  }
+ color:red; 
+}
+
+.boxsample {
+  @include boldtext;
+}
+
+// variable
+@mixin boldtext($size, $color) {
+  font:{
+    family: 'Malgun Gothic', sans-serif; 
+    weight:bold;
+    size:$size;
+  }
+ color:$color; 
+}
+
+.boxsample3 {
+  @include boldtext(24px, #000);
+}
