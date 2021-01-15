@@ -1,0 +1,6 @@
+{
+  "verbose": true,
+  "ignore": ["node_modules/*", "data/*"],
+  "ext": "js, hbs, html, css, scss, json, mjs",
+  "watch": ["app.js", "package.json", "public/*", "routes/*", "model/*", "view/*", "bin/*"]
+}
