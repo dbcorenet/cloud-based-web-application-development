@@ -1,0 +1,19 @@
+$main-width:100%;
+#main {
+  $width: 10px !global; 
+  border: $width solid red;
+  $main_color:#fff;
+  background-color:$main-color;
+  width: $main-width;
+}
+#sidebar {
+  width: $width*50;
+}
+#content {
+  $width:500px;
+  width: $width;
+}
+#sidebar2 {
+   width: ($main_width/10);  
+}
+
