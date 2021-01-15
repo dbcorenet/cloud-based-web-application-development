@@ -1,0 +1,48 @@
+<html>
+    <head>
+            <title>example</title>
+            <meta charset="utf-8">
+            <script>
+                function dayLightHandler(){
+                    if(document.querySelector('#day-night-button').value === 'night') {
+                        var aList = document.querySelectorAll('a');
+                        var i = 0;
+                        while(i < aList.length) {
+                            aList[i].style.color = 'yellow'
+                            i++;
+                        }
+                        document.querySelector('body').style.backgroundColor = 'black';
+                        document.querySelector('body').style.color = 'white';
+                        document.querySelector('#day-night-button').value = 'day';
+                    } else {
+                        var aList = document.querySelectorAll('a');
+                        var i = 0;
+                        while(i < aList.length) {
+                            aList[i].style.color = 'red'
+                            i++;
+                        }
+                        document.querySelector('body').style.backgroundColor = 'white';
+                        document.querySelector('body').style.color = 'black';
+                        document.querySelector('#day-night-button').value = 'night';
+                    }
+                }
+            </script>
+    </head>
+    
+    <body>
+        <h1>라이트/다크모드 만들기</h1>
+
+        <input id="day-night-button" type="button" value="night"  onclick="dayLightHandler()">       
+        <ol>
+            <li><a href='https://www.naver.com'>NAVER</a></li>
+            <li><a href='https://www.daum.net'>DAUM</a></li>
+            <li><a href='https://www.google.com'>GOOGLE</a></li>
+        </ol>
+
+        <h2> 자바스크립트 </h2>
+        <p>
+                자바스크립트(영어: JavaScript)는 객체 기반의 스크립트 프로그래밍 언어이다. 이 언어는 웹 브라우저 내에서 주로 사용하며, 다른 응용 프로그램의 내장 객체에도 접근할 수 있는 기능을 가지고 있다. 또한 Node.js와 같은 런타임 환경과 같이 서버 프로그래밍에도 사용되고 있다. 자바스크립트는 본래 넷스케이프 커뮤니케이션즈 코퍼레이션의 브렌던 아이크(Brendan Eich)가 처음에는 모카(Mocha)라는 이름으로, 나중에는 라이브스크립트(LiveScript)라는 이름으로 개발하였으며, 최종적으로 자바스크립트가 되었다. 자바스크립트가 썬 마이크로시스템즈의 자바와 구문이 유사한 점도 있지만, 이는 사실 두 언어 모두 C 언어의 기본 구문에 바탕을 뒀기 때문이고, 자바와 자바스크립트는 직접적인 관련성이 없다. 이름과 구문 외에는 자바보다 셀프나 스킴과 유사성이 많다.
+                ECMA스크립트는 쉽게 말해 자바스크립트의 표준화된 버전이다. 모질라 1.8 베타 1이 나오면서 XML에 대응하는 확장 언어인 E4X(ECMA-357)를 부분 지원하게 되었다. 자바스크립트는 브라우저마다 지원되는 버전이 다르다.
+        </p>
+    </body>
+</html>
