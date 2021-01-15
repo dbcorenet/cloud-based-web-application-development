@@ -184,6 +184,185 @@ layout의 {{{body}}} 부분에 코드가 주입됩니다.
 
 <img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter05/images/mvc-handlebar-rendering.PNG" style="max-width:400px;max-height:400px">
 
+## 비동기 작업의 이해
+
+웹 애플리케이션을 만들다 보면 처리할 때 시간이 걸리는 작업이 있습니다.
+<br>예를 들어 웹 애플리케이션에서 서버 쪽 데이터가 필요할 때는 Ajax 기법을 사용하여 서버의 API를 호출함으로써 데이터를 수신합니다.
+<br>이렇게 서버의 API를 사용해야 할 때는 네트워크 송수신 과정에서 시간이 걸리기 때문에 작업이 즉시 처리되는 것이 아니라, 응답을 받을 때까지 기다렸다가 전달받은 응답 데이터를 처리합니다.
+<br>이 과정에서 해당 작업을 비동기적으로 처리하게 됩니다.
+
+<img src="https://thebook.io/img/080203/355.jpg">
+
+<br>
+<br>만약 작업을 동기적으로 처리한다면 요청이 끝날 때까지 기다리는 동안 중지 상태가 되기 때문에 다른 작업을 할 수 없습니다.
+<br>그리고 요청이 끝나야 비로소 그다음 예정된 작업을 할 수 있습니다.
+<br>하지만 이를 비동기적으로 처리한다면 웹 애플리케이션이 멈추지 않기 때문에 동시에 여러 가지 요청을 처리할 수도 있고, 기다리는 과정에서 다른 함수도 호출할 수 있습니다.
+<br>
+<br>자바스크립트는 이러한 비동기 작업 때문에 여러 개의 함수를 선언하여 호출하였을 때 순서에 대한 보장이 없습니다.
+<br>예를 들어 A 함수가 실행된 후 B 함수가 실행되어야 하는경우 A, B 순서로 호출했다고 해서 반드시 A가 B 함수보더 먼저 호출된다는 보장이 없습니다.
+<br>
+<br>이러한 경우 사용하는 것이 콜백 함수입니다.
+
+### 콜백 함수
+
+파라미터 값이 주어지면 1초 뒤에 10을 더해서 반환하는 함수가 있다고 가정합니다.
+<br>그리고 해당 함수(A)가 처리 된 직후 추가적인 작업(B)을 하고 싶다면 다음과 같이 콜백 함수를 활용해서 작업합니다.
+
+```javascript
+function increase(number, callback) {
+setTimeout(() => {
+    const result = number + 10;
+  if (callback) {
+    callback(result);
+  }
+}, 1000)
+}
+
+
+increase(0, result => {
+  console.log(result);
+});
+
+```
+
+1초에 걸쳐서 10, 20, 30, 40과 같은 형태로 여러 번 순차적으로 처리하고 싶다면 콜백 함수를 중첩하여 구현할 수 있습니다
+
+
+```javascript
+function increase(number, callback) {
+setTimeout(() => {
+  const result = number + 10;
+  if (callback) {
+    callback(result);
+  }
+}, 1000);
+}
+
+console.log('작업 시작');
+increase(0, result => {
+console.log(result);
+increase(result, result => {
+  console.log(result);
+  increase(result, result => {
+    console.log(result);
+    increase(result, result => {
+      console.log(result);
+      console.log('작업 완료');
+    });
+  });
+});
+});
+```
+
+```
+작업  시작
+Hello World!
+10
+20
+30
+40
+작업 완료
+```
+
+이렇게 콜백 함수 안에 또다른 콜백을 넣어서 구현하게되면 여러 번 중첩되어 나타나 코드의 가독성이 떨어지게 됩니다.
+<br>이러한 형태의 코드를 콜백 지옥이라고 부르며 지양해야 할 형태의 코드입니다.
+
+### Promise
+
+Promise는 콜백 지옥 같은 코드가 형성되지 않게 하는 방안으로 ES6 에 도입된 기능입니다.
+<br>앞에서 본 코드를 Promise를 사용하여 구현해보면 아래와 같습니다.
+
+```javascript
+function increase(number) {
+const promise = new Promise((resolve, reject) => {
+  // resolve는 성공, reject는 실패
+  setTimeout(() => {
+    const result = number + 10;
+    if (result > 50) {
+      // 50보다 높으면 에러 발생시키기
+      const e = new Error('NumberTooBig');
+      return reject(e);
+    }
+    resolve(result); // number 값에 +10 후 성공 처리
+  }, 1000);
+});
+return promise;
+}
+
+increase(0)
+.then(number => {
+  // Promise에서 resolve된 값은 .then을 통해 받아 올 수 있음
+  console.log(number);
+  return increase(number); // Promise를 리턴하면
+})
+.then(number => {
+  // 또 .then으로 처리 가능
+  console.log(number);
+  return increase(number);
+})
+.then(number => {
+  console.log(number);
+  return increase(number);
+})
+.then(number => {
+  console.log(number);
+  return increase(number);
+})
+.then(number => {
+  console.log(number);
+  return increase(number);
+})
+.catch(e => {
+  // 도중에 에러가 발생한다면 .catch를 통해 알 수 있음
+  console.log(e);
+});
+```
+
+여러 작업을 연달아 처리하지만, 중첩으로 함수를 감싸는 것이 아니라 .then을 사용하여 같은 레벨에서 처리 할 수 있게 됩니다.
+
+### async/await
+
+async/await는 Promise는 더욱 쉽게 사용할 수 있도록 해주는 ES8 문법입니다.
+<br>이 문법을 사용하여면 함수 앞부분에 키워드 **async** 를 추가하고, 해당 함수 내부에서 Promise 의 앞부분을 **await** 키워드를 사용합니다.
+<br>async/await 를 사용하면 비동기로 동작하는 자바스크립트를 마지 자바처럼 코드를 구현하여 사용할 수 있게 됩니다.
+
+```javascript
+function increase(number) {
+const promise = new Promise((resolve, reject) => {
+  // resolve는 성공, reject는 실패
+  setTimeout(() => {
+    const result = number + 10;
+    if (result > 50) { // 50보다 높으면 에러 발생시키기
+      const e = new Error(‘NumberTooBig‘);
+              return reject(e);
+    }
+          resolve(result); // number 값에 +10 후 성공 처리
+  }, 1000)
+});
+return promise;
+}
+
+
+async function runTasks() {
+try { // try/catch 구문을 사용하여 에러를 처리합니다.
+  let result = await increment(0);
+  console.log(result);
+  result = await increment(result);
+  console.log(result);
+  result = await increment(result);
+  console.log(result);
+  result = await increment(result);
+  console.log(result);
+  result = await increment(result);
+  console.log(result);
+  result = await increment(result);
+  console.log(result);
+} catch (e) {
+  console.log(e);
+}
+}
+```
+
 ## Notes 조회, 추가, 삭제 구현
 
 ### 테스트를 위한 in-memory 코드 구현
@@ -217,7 +396,7 @@ module.exports = class Note {
 };
 ```
 
-**models/Note.js**
+**models/notes-memory.js**
 
 in-memory 데이터베이스의 기능을 정의해줍니다.
 

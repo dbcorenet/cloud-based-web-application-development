@@ -65,33 +65,34 @@
 
 ## API 요청 실습
 
-API를 요청하기 전에 node로 간단한 서버를 요청하는 코드를 작성합니다.
+API를 요청한 후 응답 결과를 테스트 하기 위해서 크롬 확장 프로그램을 사용합니다.
 
-<br>**api-test.js** 파일을 생성하여 정의합니다.
-<br>node에서 기본으로 제공하는 모듈 중 하나인 http 를 사용하여 8000 포트로 서버를 띄우는 코드입니다.
-<br>응답 결과의 타입은 text이며 "Hello nodejs"를 반환합니다.
+[크롬 확장 프로그 Taled API Tester](https://chrome.google.com/webstore/detail/talend-api-tester-free-ed/aejoelaoggembcahagimdiliamlcdmfm) 을 사용합니다.
 
-```javascript
-const http = require('http');
+1. 확장 프로그램 설치 페이지로 이동하여 **Chrome에 추가** 버튼을 클릭합니다.
 
-http.createServer(function (request, response) {
-    response.writeHead(200, {'Content-Type' : 'text/plain'});
-    response.write('Hello nodejs');
-    response.end();
-}).listen(8000);
-```
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter09/images/chrome-api-test-1.png" style="max-width:350px;max-height:400px">
 
-터미널에서 api-test.js를 생성한 경로에서 작성한 코드를 실행해봅니다.
+2. 앱의 권한을 확인 후 **확장 프로그램 추가** 버튼을 클릭합니다.
 
-```
-$ node api-test.js
-```
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter09/images/chrome-api-test-2.png" style="max-width:350px;max-height:400px">
 
-실행 결과 아래와 같이 응답합니다.
-지정한 텍스트로 응답하는 것을 확인 할 수 있습니다.
+3. 오른쪽 상단에 추가된 확장 프로그램 아이콘을 클릭합니다.
 
-<img>
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter09/images/chrome-api-test-3.png" style="max-width:350px;max-height:400px">
 
-이번에는 위의 코드를 api를 요청하여 결과 값을 반환하는 코드로 정의합니다.
+4. Free Edition 을 사용한다는 버튼을 클릭합니다.
 
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter09/images/chrome-api-test-4.png" style="max-width:350px;max-height:400px">
 
+5. METHOD, 호스트, 쿼리 파라미터, 헤더, 바디를 설정할 수 있는 기능들을 제공합니다.
+
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter09/images/chrome-api-test-5.png" style="max-width:350px;max-height:400px">
+
+6. 신청한 공공 데이터 API의 정보를 입력합니다.
+
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter09/images/chrome-api-test-6.png" style="max-width:350px;max-height:400px">
+
+7. send 버튼을 클릭한 후 response 를 확인 합니다.
+
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter09/images/chrome-api-test-7.png" style="max-width:350px;max-height:400px">
