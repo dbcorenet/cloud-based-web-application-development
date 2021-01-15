@@ -146,7 +146,7 @@ Table 태그와 함께 사용할 수 있는 `속성`들은 다음과 같습니�
 
 ![html block inline](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/tutorial-nodejs-web-development/ch02/images/ch06-border.png)
 
-###Form
+### Form
 
 form태그는 웹페이지의 내용을 다른 웹페이지 또는 웹 서버에 전송할 때 사용됩니다. 
 
