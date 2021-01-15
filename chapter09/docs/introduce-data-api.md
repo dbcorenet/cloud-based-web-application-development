@@ -96,3 +96,78 @@ API를 요청한 후 응답 결과를 테스트 하기 위해서 크롬 확장 �
 7. send 버튼을 클릭한 후 response 를 확인 합니다.
 
 <img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter09/images/chrome-api-test-7.png" style="max-width:350px;max-height:400px">
+
+## node로 api 요청 서버 생성
+
+툴을 사용하여 api를 요청하면 문제가 발생하지 않지만, 리액트에서 ajax로 데이터를 요청하면 크로스 도메인 문제가 발생합니다.
+
+### 크로스 도메인
+
+ServerA는 여러분들이 만든 애플리케이션이고 ServerB 는 공공데이터 API 입니다.
+
+<img src="https://miro.medium.com/max/1400/1*hlXnXvqN6SyjgOFw7sJ0-Q.png">
+
+AJAX를 사용하여 클라이언트에서 직접 호출하게 되면 크로스 도메인 문제가 생깁니다.
+<br>자바스크립트로는 CORS를 풀어주지 못하므로 클라이언트에서 웹 서버로 요청하고 웹 서버가 공공 API를 Nodejs로 요청한 뒤 결과를 json으로 만들어 클라이언트에서 응답을 받을 수 있도록 해야 합니다.
+
+<img src="https://miro.medium.com/max/1400/1*Gr3T_pkgMBbZw4v6Mjcm0g.png">
+
+### nodejs 서버 생성
+
+1. nodejs 서버를 생성 할 디렉토리를 만든 후 파일을 만들어줍니다.
+
+2. nodejs 서버 구동에 필요한 모듈을 설치합니다.
+
+```
+$ npm install -g request
+$ npm install -g querystring
+$ npm install express --save
+```
+
+
+3. '/api'로 요청이 들어오면 공공데이터 API를 요청한 결과 값을 반환하는 코드를 구현합니다.
+
+```javascript
+var express = require('express'),
+    request = require('request'),
+    app = express();
+    qs = require('querystring')
+
+app.all('/api', function (req, res, next) {
+
+    // Set CORS headers: allow all origins, methods, and headers: you may want to lock this down in a production environment
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, PUT, PATCH, POST, DELETE");
+    res.header("Access-Control-Allow-Headers", req.header('access-control-request-headers'));
+
+    const sidoName = req.query.sidoName || '경남';
+    const serviceKey = '발급받은 서비스 키';
+    const queryString = {
+        dataTerm : '3MONTH',
+        InformCode : 'PM10',
+        numOfRows : 100,
+        returnType : 'JSON',
+        sidoName : sidoName
+    };
+    const targetUrl=`http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?serviceKey=${serviceKey}&${qs.stringify(queryString)}`;
+    request(targetUrl, function(e,r,data) {
+        res.json(JSON.parse(data));
+    });
+});
+
+app.set('port', process.env.PORT || 3000);
+
+app.listen(app.get('port'), function () {
+    console.log('Proxy server listening on port ' + app.get('port'));
+});
+```
+
+4. 파일을 저장한 후 실행합니다.
+
+```
+$ node api-test.js
+```
+
+5. IP로 접속하여 결과 값을 확인합니다.
+
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter09/images/node-api-test-result.png" style="max-width:350px;max-height:400px">
