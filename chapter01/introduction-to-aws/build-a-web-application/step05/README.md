@@ -122,3 +122,7 @@ Amplify 에 등록한 웹 애플리케이션의 **Domain** 주소 클릭 (예제
 ![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter01/images/Screen%20Shot%202021-01-16%20at%209.59.54%20PM.png)
 
 ![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter01/images/Screen%20Shot%202021-01-16%20at%2010.01.21%20PM.png)
+
+AWS DynamoDB 콘솔 > 테이블 > HelloWorldDatabase
+
+![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter01/images/Screen%20Shot%202021-01-16%20at%2010.04.25%20PM.png)
