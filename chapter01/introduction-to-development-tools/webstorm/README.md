@@ -6,7 +6,6 @@
 
 
 ## Jetbrain 교육용 무료 라이선스 신청
-
 * [스페셜 오퍼](https://www.jetbrains.com/ko-kr/idea/buy/#discounts?billing=yearly)
 
 ![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter01/images/Screen%20Shot%202021-01-18%20at%203.25.31%20AM.png)
@@ -17,7 +16,6 @@
 
 
 ### 지원서 입력 내용
-
 
 ![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter01/images/Screen%20Shot%202021-01-18%20at%203.26.03%20AM.png)
 
