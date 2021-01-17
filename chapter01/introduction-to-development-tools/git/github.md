@@ -28,10 +28,10 @@ https://education.github.com/students
 * [Microsoft Azure](https://azure.microsoft.com/ko-kr/free/students/) : 25 이상 서비스 무료 사용 가능, $100 크레딧
 * [DigitalOcean](https://www.digitalocean.com/github-students/?utm_medium=partnerships&utm_source=github&utm_campaign=studentdevpack) : $50 크래딧
 * [JetBrain](https://www.jetbrains.com/community/education/?authMethod=github#students) : 연간 라이센스 구독 무료 (IntelliJ, WebStorm, PyCharm Professional)
-* [Termius])(https://termius.com/education?utm_source=github+termius) : 프리미엄 SSH 플랜 무료
+* [Termius](https://termius.com/education?utm_source=github+termius) : 프리미엄 SSH 플랜 무료
 * [Unity](https://store.unity.com/academic/unity-student) : 학생기간 동안 Unity Student Plan 무료
 * [educative](https://www.educative.io/github-students?utm_source=github-student-pack) : 6개월 동안 60 이상 
-* [Name.com](https://www.name.com/partner/github-students) : 1개 도메인 무료, SSL 인증서 무료
+* [Name.com](https://www.name.com/partner/github-students) : 1개 도메인 무료, SSL 인증서 무료
 * [Bootstrap Studio](https://bootstrapstudio.io/student-pack): 학생기간 동안 무료
 * [iconscout](https://iconscout.com/github-students?utm_campaign=github-education&utm_medium=web&utm_source=partner) : 1년 동안 60개 프리미엄 아이콘 다운로드
 * [GitKraken](https://www.gitkraken.com/github-student-developer-pack): Git GUI 프로버전 무료
@@ -67,11 +67,6 @@ https://desktop.github.com/
 
 ![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter01/images/w1.PNG)
 
-### GitHub Desktop 초기 설정
- 
- ![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter01/images/Screen%20Shot%202021-01-17%20at%204.23.20%20AM.png)
-
-
 ## GitHub Desktop 을 사용하여 원격저장소 소스 받기
 
 * 특강자료 저장소 : https://github.com/dbcorenet/cloud-based-web-application-development
@@ -79,7 +74,7 @@ https://desktop.github.com/
 
 GitHub 최초 설치 후 처음 실행할 때 **Sign in to GitHub.com** 버튼 클릭
 
-![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter01/images/Screen%20Shot%202021-01-17%20at%209.04.05%20PM.png)
+![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter01/images/Screen%20Shot%202021-01-17%20at%204.23.20%20AM.png)
 
 GitHub 한번 설치 후 로그인 정보가 없을 때 화면 
 
