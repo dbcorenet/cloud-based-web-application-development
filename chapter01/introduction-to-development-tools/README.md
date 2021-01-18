@@ -10,5 +10,5 @@
 * [Node.js](./nodejs/)
 * AWS
     * [계정생성(가입)](./aws/create-account.md)
-    * [LightSail](./aws/lightsail/)
+    * [LightSail](./aws/lightsail.md)
 
