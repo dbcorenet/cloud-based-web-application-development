@@ -43,7 +43,7 @@ const sampleArticle = {
 };
 */
 
-const AirList = () => {
+const AirList = ({category}) => {
 
     const [articles, setArticles] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -54,7 +54,7 @@ const AirList = () => {
                 setLoading(true);
                 try {
                     const response = await axios.get(
-                    'http://3.35.219.122:3000/api?sidoName=경남',
+                    `http://3.35.219.122:3000/api?sidoName=${category}`,
                         );
                     setArticles(response.data.response.body.items);
                     //console.log(response.data.response.body.items)
@@ -64,7 +64,7 @@ const AirList = () => {
                 setLoading(false);
             };
             fetchData();
-        }, []);
+        }, [category]);
 
         // 대기 중일 때
         if (loading) {

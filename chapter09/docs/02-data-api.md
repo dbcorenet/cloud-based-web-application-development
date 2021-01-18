@@ -468,9 +468,309 @@ export default AirList;
 
 먼저 카테고리를 선택할 수 있는 UI를 생성합니다.  components 디렉터리에 Categories.js 파일을 다음과 같이 생성합니다. 
 
+```javascript
+import React from 'react';
+import styled from 'styled-components';
+import {NavLink} from 'react-router-dom';
+
+const categories = [
+    {
+        sidoName: '전국',
+    },
+    {
+        sidoName: '서울',
+    },
+    {
+        sidoName: '부산',
+    },
+    {
+        sidoName: '대구',
+    },
+    {
+        sidoName: '인천',
+    },
+    {
+        sidoName: '광주',
+    },
+    {
+        sidoName: '대전',
+    },
+    {
+        sidoName: '울산',
+    },
+    {
+        sidoName: '경기',
+    },
+    {
+        sidoName: '강원',
+    },
+    {
+        sidoName: '충북',
+    },
+    {
+        sidoName: '충남',
+    },
+    {
+        sidoName: '전북',
+    },{
+        sidoName: '전남',
+    },
+    {
+        sidoName: '경북',
+    },
+    {
+        sidoName: '경남',
+    },
+    {
+        sidoName: '제주',
+    },
+    {
+        sidoName: '세종',
+    },
+];
+
+const CategoriesBlock = styled.div`
+  display: flex;
+  padding: 1rem;
+  width: 768px;
+  margin: 0 auto;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    overflow-x: auto;
+  }
+`;
+
+const Category = styled(NavLink)`
+  font-size: 1.125rem;
+  cursor: pointer;
+  white-space: pre;
+  text-decoration: none;
+  color: inherit;
+  padding-bottom: 0.25rem;
+  &:hover {
+    color: #495057;
+  }
+  &.active {
+    font-weight: 600;
+    border-bottom: 2px solid #22b8cf;
+    color: #22b8cf;
+    &:hover {
+      color: #3bc9db;
+    }
+  }
+  & + & {
+    margin-left: 1rem;
+  }
+`;
+const Categories = () => {
+    return (
+        <CategoriesBlock>
+            {categories.map(c => (
+                <Category
+                          key={c.sidoName}
+                          activeClassName="active"
+                          exact={c.sidoName === '전국'}
+                          to={ c.sidoName === '전국' ? '/api' : `/api/${c.sidoName}`}
+
+                >{c.sidoName}</Category>
+            ))}
+        </CategoriesBlock>
+    );
+};
+
+export default Categories;
 ```
 
+categories라는 배열 안에 sidoName 값이 들어있는 객체를 카테고리로 사용합니다. 
+
+react-router-dom의 `NavLink`를 사용하여 선택된 카테고리에 다른 스타일을 주었습니다. div, a, button, input처럼 일반 HTML요소가 아닌 특정 컴포넌트에 styled-components를 사용할 때는 styled(컴포넌트이름) 과 같은 형식을 사용하면 됩니다. 
+
+NavLink로 만들어진 Category 컴포넌트에 to 값은 "/api/카테고리이름" 으로 설정해줍니다. 그리고 전국은 예외적으로 "/api" 로 설정했습니다. to 값이 "/api" 인 전국인 경우 exact값을 true로 설정해주어야 하는데, 이 값을 설정하지 않으면 다른 카테고리가 선택되었을 경우에도 전국 링크에 스타일이 적용되는 오류가 발생합니다. 
+
+
+
+### AirPage 생성
+
+카테고리를 추가하기 위해 components디렉터리에  AirPage.js 파일을 생성합니다. 
+
+AirPage 컴포넌트는 Categories, AirList 컴포넌트를 함께 렌더링 해줍니다. 
+
+```javascript
+import React from 'react';
+import Categories from './Categories';
+import AirList from './AirList';
+
+const NewsPage = ({ match }) => {
+    // 카테고리가 선택되지 않았으면 기본값 전국으로 사용
+    const category = match.params.category || '전국';
+
+    return (
+        <>
+            <Categories />
+            <AirList category={category} />
+        </>
+    );
+};
+
+export default NewsPage;
 ```
 
+App.js에서 "/api" 요청시 AirList컴포넌트를 렌더링했지만, 카테고리와  AirList 컴포넌트가 포함된 AirPage컴포넌트를 렌더링하도록 수정할 것입니다. src/App.js 파일을 다음과 같이 수정합니다. 
+
+```javascript
+import React, {useState} from 'react';
+import { Route , Link, Switch } from 'react-router-dom';
+import About from './About';
+import Home from './Home';
+import Profiles from './Profiles';
+import HistorySample from './HistorySample';
+import axios from 'axios';
+import AirPage from './components/AirPage';
+
+const App = () => {
 
 
+    const [data, setData] = useState(null);
+
+    const onClick = async () => {
+        try {
+            const response = await axios.get(
+                'http://3.35.219.122:3000/api?sidoName=경남',
+            );
+            setData(response.data);
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+
+    return (
+        <div>
+            <ul>
+                <li>
+                    <Link to="/">홈</Link>
+                </li>
+                <li>
+                <Link to="/about">소개</Link>
+                </li>
+                <li>
+                    <Link to="/profiles">프로필</Link>
+                </li>
+                <li>
+                    <Link to='/history'>History 예제</Link>
+                </li>
+                <li>
+                    <Link to='/api'>Api 예제</Link>
+                </li>
+            </ul>
+            <hr/>
+            <Switch>
+            <Route path="/" component={Home} exact={true} />
+            <Route path={["/about", "/info"]} component={About} />
+            <Route path="/profiles" component={Profiles} />
+            <Route path="/history" component={HistorySample} />
+            <Route path="/api/:category?" component={AirPage} />
+                <Route
+                    // path를 따로 정의하지 않으면 모든 상황에 렌더링됨
+                    render={({ location }) => (
+                        <div>
+                            <h2>이 페이지는 존재하지 않습니다:</h2>
+                            <p>{location.pathname}</p>
+                        </div>
+                    )}
+                />
+            </Switch>
+
+            <div>
+                <div>
+                    <button onClick={onClick}>불러오기</button>
+                </div>
+                {data && <textarea rows={7} value={JSON.stringify(data, null, 2)} readOnly={true} />}
+            </div>
+
+
+        </div>
+);
+};
+
+export default App;
+```
+
+위 코드에서 사용된 path에 /:category?와 같은 형태로 맨뒤에 물음표 문자가 들어가 있는데, 이것은 category값이 선택적이라는 것을 의미합니다. 즉 있을수도 없을수도 있다는 뜻입니다. 
+
+
+
+API 호출시 카테고리를 지정해주기 위해 AirList.js 파일을 다음과 같이 수정합니다. AirPage컴포넌트로 부터 props로 받아온 category에 따라 카테고리를 지정하여 API를 요청하게 됩니다. 
+
+```javascript
+import React, {useState, useEffect} from 'react';
+import styled from 'styled-components';
+import AirItem from './AirItem';
+import axios from 'axios';
+
+
+const AirListBlock = styled.div`
+  box-sizing: border-box;
+  padding-bottom: 3rem;
+  width: 768px;
+  margin: 0 auto;
+  margin-top: 2rem;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+`;
+
+
+const AirList = ({category}) => {
+
+    const [articles, setArticles] = useState(null);
+    const [loading, setLoading] = useState(false);
+
+        useEffect(() => {
+            // async를 사용하는 함수 따로 선언
+            const fetchData = async () => {
+                setLoading(true);
+                try {
+                    const response = await axios.get(
+                    `http://3.35.219.122:3000/api?sidoName=${category}`,
+                        );
+                    setArticles(response.data.response.body.items);
+                    //console.log(response.data.response.body.items)
+                } catch (e) {
+                    console.log(e);
+                }
+                setLoading(false);
+            };
+            fetchData();
+        }, [category]);
+
+        // 대기 중일 때
+        if (loading) {
+            return <AirListBlock>대기 중…</AirListBlock>;
+        }
+        // 아직 articles 값이 설정되지 않았을 때
+        if (!articles) {
+            return null;
+        }
+        // articles 값이 유효할 때
+        return (
+            <AirListBlock>
+                {articles.map(article => (
+                    <AirItem key={article.stationName} article={article} />
+                ))}
+            </AirListBlock>
+        );
+};
+
+
+
+export default AirList;
+```
+
+현재 요청한 카테고리 값에 따라 요청 주소가 동적으로 변경되게 됩니다.  추가로 카테고리값이 변경될때마다 api를 새로 호출해야 하기 때문에 useEffect의 두번째 파라미터로 category를 넣어주어야 합니다. 이는 category가 변경될때 마다 useEffect가 실행되도록 해줍니다. 
+
+여기까지 작업을 마쳤다면, 브라우저에서 http://localhost:3000/api으로 접속해서 카테고리 클릭 시 페이지 주소가 변경되고 대기오염 정보를 잘 출력하는지 확인하면 됩니다. 
+
+![img](https://dbcore-assets-public.s3.amazonaws.com/tutorials/tutorial-nodejs-web-development/ch02/images/ch09-api-end.png)

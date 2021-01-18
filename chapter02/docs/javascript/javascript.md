@@ -550,6 +550,214 @@ add(1,2);       //3 출력
 </html>
 ```
 
+<br>
+
+
+## JavaScript 비동기식 처리 및 Callback 함수
+
+### 비동기식 처리
+JavaScript는  싱글 쓰레드 기반으로 동작합니다.   
+그래서 두가지 작업을 동시에 진행할 수 없습니다.  
+여러작업을 동시에 처리하기 위한 기술 중 하나가 바로 코드를 비동기 식으로 처리하는 것입니다.  
+우리가 잘 알고 있는 코드는 코드가 위에서 부터 실행중인 코드가 실행 및 종료 되어야 다음 코드가 실행되는 동기식 방식으로 처리 됩니다.  
+
+하지만 JavaScript는 특정 코드의 연산이 끝날때까지 기다리지 않고 다음 코드를 실행합니다.  
+이를 비동기식 처리라고 할 수 있습니다.  
+
+JavaScript에서 아래의 코드의 실행 결과는 어떻게 될까요 ?
+
+```javascript
+console.log('첫번째');
+
+setTimeout(function(){
+    console.log('두번째');
+}, 3000)
+
+console.log('세번째');
+```
+
+비동기식 처리에 대해 모르는 사람이라면 코드의 실행 순서대로   
+
+'첫번째'  
+'두번째'  
+'세번째'  
+
+위와 같이 출력 된다고 생각할 수 있습니다.  
+
+
+하지만 JavaScript에서는 아래와 같이 출력 됩니다.   
+
+'첫번째'  
+'세번쨰'  
+'두번째'  
+
+왜냐하면 첫번째 console.log가 실행되고 3초 대기 후 두번째를 출력 하기 전까지 기다리지 않고 마지막 세번째를 실행하기 때문입니다.  
+
+<br>
+
+### 콜백 함수 (Callback function)
+
+Javascript는 이벤트 기반 언어 이기 때문에 위에서 설명한 것처럼 비동기 방식으로 처리 됩니다.  
+비동기 처리 방식의 장점도 있지만 위의 예제 처럼 우리 의도한 대로 코드가 동작 되지 않을수 있다는 문제점이 있습니다.  
+이 문제를 콜백 함수를 이용하여 해결할수 있습니다.  
+
+<br>
+
+**콜백 함수**
+
+Javascript에서 함수는 객체 입니다.  
+그래서 함수는 다른 함수의 파라미터로 쓰일 수도 있고 다른 함수의 리턴 결과로도 사용 될 수 있습니다.  
+
+콜백 함수는 다른 함수가 실행을 끝난뒤 리턴되는 함수를 callback 함수라 정의 할 수 있습니다.  
+
+다른 함수가 실행을 끝내고 리턴 되는 함수이기 때문에 비동기식 처리 방식의 문제점을 이것의 성질을 이용하여 해결 할 수 있습니다.  
+
+아래는 callback 함수의 간단한 사용 방법 입니다.
+
+```javascript
+function first(str, callback) {
+    console.log(1);
+    callback();
+}
+
+function second(str, callback) {
+    console.log(2)  
+    callback(str);
+}
+
+function third(num1, num2, callback) {
+    console.log(3)
+    callback(num1, num2);
+}
+```
+
+<br>
+
+위와 같이 세개의 함수가 실행되고 마지막에 빈값, 한개, 두개의 값들을 callback 함수에 실어 리턴 할 수 있습니다.  
+이렇게 리턴되는 callback 함수는 위 함수를 받아 실행하는 함수에서 받아 사용할 수 있습니다.  
+
+```javascript
+first('1', function() {
+    second('2', function(secondCallback) {
+        third('3', function(num1, num2) {
+
+        })
+    })
+})
+```
+
+<br>
+
+
+**콜백 지옥**
+
+위에서 설명한 비동기식의 문제와 해결책으로 인해 아래와 같은 콜백 지옥을 맞이하는 경우가 있습니다.  
+아래의 사진과 같은 콜백 함수들은 가독성 및 유지보수에 많은 어려움을 초래 합니다.  
+
+
+![query-selector](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter01/images/callback-hell.png)
+
+<br>
+
+
+**Promise 객체 및 Arrow Function**
+
+우선 Promise는 ES6 부터 자바스크립트의 전통적인 콜백의 단점들을 보완하고자 나온 객체입니다.  
+Promise 객체는 비동기 작업의 결과(성공/실패)를 return해주는 객체라고 간단하게 설명할 수 있습니다.
+
+Promise는 크게 3가지 상태로 나눌수 있습니다.
+
+- 대기상태(Pending) : 비동기식 처리가 아직 완료 되지 않은 상태  
+- 이행(Fulfilled) : 비동기식 처리가 완료되어 결과값을 반환한 상태  
+- 실패(Rejected) : 비동기식 처리가 실패하거나 오류가 발생한 상태  
+
+
+***Promise 및 Arrow Function 객체 사용법 ***
+
+Promise 객체는 아래와 같은 형태로 사용할 수 있습니다.  
+
+
+```javascript
+function promiseTest(value) {
+    return new Promise(function(resolve, reject){
+        if(...) {
+            //원하는, 성공적은 결과
+            resolve(value);
+        } else(err) {
+            //실패시 결과 리턴
+            reject(new Error());
+        }
+    })
+}
+```
+
+Promise의 결과로 리턴된 값으 then()으로 처리가능하고 에러는 catch()(권장)로 처리 합니다.
+<br>
+
+**Arrow Function 적용 전**
+```javascript
+    promiseTest('test')
+    .then( function(resolveValue){
+        console.log(resolveValue);
+        return resolveValue + 1;
+    })
+    .then( function(resolveValue) {
+        console.log(resolveValue2);
+    })
+    .catch(function(err) {
+        console.log(err);
+    })
+```
+<br>
+
+**Arrow Function 적용 후**
+```javascript
+    promiseTest('test')
+    .then( (resolveValue) => {
+        console.log(resolveValue);
+        return resolveValue + 1;
+    })
+    .then(resolveValue2 => {
+        console.log(resolveValue2);
+    })
+    .catch(err => {
+        console.log(err);
+    })
+```
+<br>
+
+***Promise 객체 응용***
+
+위에서 설명한 Promise 객체를 이용해서 간단한 코드를 만들어 보고 결과를 보겠습니다.  
+
+
+```javascript
+function gtZero(num) {
+    return new Promise((resolve, reject) => {
+        if(num >= 0) {
+            resolve(num);
+        } else {
+            reject(new Error("0 보다 작습니다!"));
+        }
+    } )
+}
+
+gtZero(1)
+.then(num => {
+    console.log(num);
+    return num + 1;
+})
+.then(num => {
+    console.log(num);
+    return num + 1;
+})
+.catch(err => {
+    console.log(err);
+})
+```
+
+
+
 
 
 
