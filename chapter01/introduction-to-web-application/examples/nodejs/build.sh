@@ -1,0 +1,1 @@
+docker build -t sungkwang/node-web-app .
