@@ -680,7 +680,7 @@ SASS문법으로 작성된 파일은 CSS 파일로 컴파일 한 후 웹페이�
 
 *설치*
 ```
-$ sudo npm install --unsafe-perm node-sass-middleware
+$ npm install node-sass-middleware
 
 ```
 
