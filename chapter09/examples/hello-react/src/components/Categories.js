@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 const categories = [
     {
@@ -96,13 +96,12 @@ const Categories = () => {
         <CategoriesBlock>
             {categories.map(c => (
                 <Category
-                    key={c.sidoName}
-                    activeClassName="active"
-                    exact={c.sidoName === 'all'}
-                    to={`/${c.name}`}
-                >
-                    {c.sidoName}
-                </Category>
+                          key={c.sidoName}
+                          activeClassName="active"
+                          exact={c.sidoName === '전국'}
+                          to={ c.sidoName === '전국' ? '/api' : `/api/${c.sidoName}`}
+
+                >{c.sidoName}</Category>
             ))}
         </CategoriesBlock>
     );
