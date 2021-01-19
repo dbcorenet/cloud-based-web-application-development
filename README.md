@@ -10,11 +10,15 @@
 * 강사 : 하이브레인넷/하이볼(주) 소속 연구원
 * 대상 : 컴퓨터공학과 3학년 진급이상 학생 (졸업예정/졸업생도 가능)
 
+---
+* 교육 참석자는 [2021년 동계방학 클라우드서비스 기반의 웹 애플리케이션 개발 교육 참석자 명단](https://docs.google.com/spreadsheets/d/11xJfJOK1MOHOPm8uOS26Hpqi_aDiCQpJ7snrDM9X2go/edit#gid=0) 문서에서 **이메일** 항목에 Slack 에 사용할 이메일 주소를 입력바랍니다. Slack 채널 초대 메일 발송 예정입니다. 
+---
+
 ## [Chapter01. 소개 및 개발환경 구축](./chapter01/) (1월 18일)
 
-* 웹 애플리케이션 동작 원리 소개
-* AWS 클라우드서비스 소개 및 개발환경 설정
-* 웹 애플리케이션 개발 툴 소개 및 설치
+* [웹 애플리케이션 동작 원리 소개](./chapter01/introduction-to-web-application/)
+* [웹 애플리케이션 개발 툴 소개 및 설치](./chapter01/introduction-to-development-tools/)
+* [AWS 클라우드서비스 소개 및 개발환경 설정](./chapter01/introduction-to-aws/)
 
 ## [Chapter02. 웹 애플리케이션 프로그래밍 언어 실습](./chapter02/) (1월 19일)
 

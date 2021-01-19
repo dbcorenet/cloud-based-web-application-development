@@ -1,0 +1,5 @@
+.idea
+**/*/.idea
+*.swap
+*.bak
+**/*/node_modules

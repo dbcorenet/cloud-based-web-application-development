@@ -1,0 +1,16 @@
+<ul class="people_list">
+    {{#each people}}
+        <li>{{this}}, {{@index}}</li>
+        {{#if @first}}
+            처음입니다.
+        {{/if}}
+        {{#if @last}}
+            마지막입니다.
+        {{/if}}
+         {{!--
+        context change x : {{AllLength}}
+        <br>
+        context change o : {{../AllLength}}
+        --}}
+    {{/each}}
+</ul>
