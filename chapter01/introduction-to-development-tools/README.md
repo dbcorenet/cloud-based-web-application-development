@@ -9,6 +9,6 @@
 * [WebStorm](./webstorm/)
 * [Node.js](./nodejs/)
 * AWS
-    * [계정생성(가입)](./aws/create-account.md)
-    * [LightSail](./aws/lightsail.md)
-
+    * [계정생성(가입)](../introduction-to-aws/account/create-account.md)
+    * [LightSail 인스턴스 생성](../introduction-to-aws/lightsail/create-lightsail-instance.md)
+    * [비용발생 방지 알람 생성](../introduction-to-aws/cloudwatch/create-alarm-to-avoid-billing.md)
