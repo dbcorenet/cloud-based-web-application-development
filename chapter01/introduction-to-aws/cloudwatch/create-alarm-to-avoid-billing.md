@@ -1,17 +1,4 @@
-
-## Free Tier 사용시 주의 사항
-
-* [예상치 않은 비용 방지](https://docs.aws.amazon.com/ko_kr/awsaccountbilling/latest/aboutv2/checklistforunwantedcharges.html)
-
-### AWS 프리 티어 만료
-
-* 프리 티어 기간이 만료된 후 계정에 할당된 리소스에 비요이 청구되기 시작
-* [AWS Management 콘솔](https://console.aws.amazon.com/console/home)에서 사용 중인 리소스 확인
-* 리소스 확인은 **각 리전별로 확인**
-
-
-
-## AWS 비용 0.1 USD 이상 발생시 경보 생성
+# AWS 비용 발생 방지 알림 생성
 
 AWS CloudWatch 콘솔 > 결제
 
@@ -26,6 +13,8 @@ AWS CloudWatch 콘솔 > 결제
 
 **지표 선택** 버튼 클릭
 
+![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter01/images/Screen%20Shot%202021-01-19%20at%206.25.26%20PM.png)
+
 * **네임스페이스** : AWS/Billing
 * **지표이름** : EstimateCharges
 * **Currency** : USD
@@ -34,8 +23,6 @@ AWS CloudWatch 콘솔 > 결제
 * **임계유형** : 정적
 * **경보조건** : 보다 큼 
 * **임계값** : 0.1
-
-![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter01/images/Screen%20Shot%202021-01-19%20at%206.25.26%20PM.png)
 
 **다음** 버튼 클릭
 
