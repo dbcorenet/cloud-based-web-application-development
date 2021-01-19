@@ -3,8 +3,9 @@
 ## AWS 서비스를 이용한 웹 애플리케이션 개발 실습 
 
 * [계정생성(가입)](./iam/create-account.md)
-* [LightSail 인스턴스 생성](./lightsail/create-lightsail-instance.md)
+* [로그인 보안을 위한 멀티팩터 인증 활성화](./iam/enabling-mfa.md)
 * [비용발생 방지 알람 생성](./cloudwatch/create-alarm-to-avoid-billing.md)
+* [AWS LightSail 인스턴스 생성](./lightsail/create-lightsail-instance.md)
 * [AWS Amplify 를 이용한 웹 애플리케이션 개발](./build-a-web-application/)
 ___
 

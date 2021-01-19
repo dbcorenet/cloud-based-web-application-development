@@ -10,5 +10,6 @@
 * [Node.js](./nodejs/)
 * AWS
     * [계정생성(가입)](../introduction-to-aws/iam/create-account.md)
-    * [LightSail 인스턴스 생성](../introduction-to-aws/lightsail/create-lightsail-instance.md)
+    * [로그인 보안을 위한 멀티팩터 인증 활성화](./introduction-to-aws/iam/enabling-mfa.md)
     * [비용발생 방지 알람 생성](../introduction-to-aws/cloudwatch/create-alarm-to-avoid-billing.md)
+    * [AWS LightSail 인스턴스 생성](../introduction-to-aws/lightsail/create-lightsail-instance.md)
