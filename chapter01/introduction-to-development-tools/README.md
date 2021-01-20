@@ -5,7 +5,9 @@
 * Git
     * [GitHub](./git/github.md)
     * [Git 설치](./git/)    
-* [Vidual Studio Code](./vscode/)
+* [Vidual Studio Code]
+    * [설치](./vscode/install-vscode.md)
+    * [Remote Development Extension을 이용하여 원격서버 접속 및 개발](./vscode/using-remote-development-extension.md)
 * [WebStorm](./webstorm/)
 * [Node.js](./nodejs/)
 * AWS

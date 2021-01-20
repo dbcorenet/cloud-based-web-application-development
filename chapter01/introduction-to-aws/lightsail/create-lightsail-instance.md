@@ -60,3 +60,4 @@ ssh -i 키페어위치 ubuntu@라이트세일아이피
 ```
 
 ![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter01/images/Screen_Shot_2021-01-18_at_5_15_15_AM.png)
+
