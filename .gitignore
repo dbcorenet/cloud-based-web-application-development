@@ -3,3 +3,5 @@
 *.swap
 *.bak
 **/*/node_modules
+*.lock
+*-lock.json

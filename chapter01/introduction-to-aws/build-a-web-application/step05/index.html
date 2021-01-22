@@ -38,7 +38,7 @@
                 redirect: 'follow'
             };
             // make API call with parameters and use promises to get response
-            fetch("https://q0ktey2z3b.execute-api.ap-northeast-2.amazonaws.com/dev", requestOptions)
+            fetch("API Gateway URL 입력", requestOptions)
             .then(response => response.text())
             .then(result => alert(JSON.parse(result).body))
             .catch(error => console.log('error', error));

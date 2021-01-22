@@ -111,7 +111,7 @@ module.exports = router;
 
 서버를 시작한 뒤 메인에 접속하면 title로 전달된 Express 가 출력되는 것을 확인 할 수 있습니다.
 
-<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter05/images/mvc-start-express.PNG" style="max-width:400px;max-height:400px">
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter05/images/mvc-start-express.png" style="max-width:400px;max-height:400px">
 
 ### 라우팅 설정
 
@@ -182,7 +182,7 @@ layout의 {{{body}}} 부분에 코드가 주입됩니다.
 
 메인에 접속하면 아래처럼 layout의 {{{body}}}에 index가 삽입되어 웹페이지에 표시되는 것을 확인 할 수 있습니다.
 
-<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter05/images/mvc-handlebar-rendering.PNG" style="max-width:400px;max-height:400px">
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter05/images/mvc-handlebar-rendering.png" style="max-width:400px;max-height:400px">
 
 ## 비동기 작업의 이해
 
@@ -525,7 +525,7 @@ header 파셜을 추가합니다.
 <br>
 메인을 수정한 결과 실행하면 아래와 같은 화면이 출력됩니다.
 
-<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter05/images/mvc-notes-main.PNG" style="max-width:400px;max-height:400px">
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter05/images/mvc-notes-main.png" style="max-width:400px;max-height:400px">
 
 
 ### Notes 추가
@@ -595,7 +595,7 @@ router.post('/notes/save', async (req, res, next) => {
 
 메모를 추가하는 화면입니다.
 
-<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter05/images/mvc-add-memo.PNG" style="max-width:400px;max-height:400px">
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter05/images/mvc-add-memo.png" style="max-width:400px;max-height:400px">
 
 
 ### Notes view 화면
@@ -634,7 +634,7 @@ router.get('/notes/view', async (req, res, next) => {
 
 메모를 추가한 후 상세보기 파일로 전환되는 것을 확인 할 수 있습니다.
 
-<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter05/images/mvc-memo-view.PNG" style="max-width:400px;max-height:400px">
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter05/images/mvc-memo-view.png" style="max-width:400px;max-height:400px">
 
 
 ### Notes 삭제
@@ -667,7 +667,7 @@ notedestroy 파일을 정의합니다.
 ```
 
 
-<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter05/images/mvc-delete-confirm-view.PNG" style="max-width:400px;max-height:400px">
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter05/images/mvc-delete-confirm-view.png" style="max-width:400px;max-height:400px">
 
 삭제 라우터를 정의합니다.
 <br>메모가 삭제 된 후에는 '/' 메인으로 리다이렉트 됩니다.
@@ -680,4 +680,4 @@ router.post('/notes/destroy/confirm', async (req, res, next) => {
 });
 ```
 
-<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter05/images/mvc-redirect-main.PNG" style="max-width:400px;max-height:400px">
+<img src="https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter05/images/mvc-redirect-main.png" style="max-width:400px;max-height:400px">
