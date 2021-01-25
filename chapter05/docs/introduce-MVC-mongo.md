@@ -46,7 +46,7 @@ module.exports = class Note {
 Lightsail에서 아래의 명령어를 통해 mongoDB의 구동 상태를 확인 합니다.  
 
 ```bash
-systemctl status mognod
+systemctl status mongod
 ```
 
 <br>
