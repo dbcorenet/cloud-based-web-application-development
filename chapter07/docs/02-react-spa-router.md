@@ -561,32 +561,41 @@ HistorySample 컴포넌트는 뒤로가기 기능을 가지고 있는 handleGoBa
 App 컴포넌트에서 /history 경로에 해당 컴포넌트가 보이도록 src/App.js 파일을 수정해줍니다. 
 
 ```javascript
-import React, { Component } from 'react';
+import React from 'react';
+import { Route , Link, Switch } from 'react-router-dom';
+import About from './About';
+import Home from './Home';
+import Profiles from './Profiles';
+import HistorySample from './HistorySample';
+
+const App = () => {
+    return (
+        <div>
+            <ul>
+                <li>
+                    <Link to="/">홈</Link>
+                </li>
+                <li>
+                <Link to="/about">소개</Link>
+                </li>
+                <li>
+                    <Link to="/profiles">프로필</Link>
+                </li>
+                <li>
+                    <Link to='/history'>History 예제</Link>
+                </li>
+            </ul>
+            <hr/>
+            <Route path="/" component={Home} exact={true} />
+            <Route path={["/about", "/info"]} component={About} />
+            <Route path="/profiles" component={Profiles} />
+            <Route path="/history" component={HistorySample} />
+        </div>
+);
+};
 
 
-class HistorySample extends Component {
-    // 뒤로 가기
-    handleGoBack = () => {
-        this.props.history.goBack();
-    };
-
-    // 홈으로 이동
-    handleGoHome = () => {
-        this.props.history.push('/');
-    };
-
-    render() {
-        return (
-            <div>
-            <button onClick={this.handleGoBack}>뒤로</button>
-            <button onClick={this.handleGoHome}>홈으로</button>
-            </div>
-    );
-    }
-}
-
-
-export default HistorySample;
+export default App;
 ```
 
 브라우저에서 http://localhost:3000/history 으로 접속한다음 뒤로, 홈으로 버튼이 잘 작동하는지 확인합니다. 
