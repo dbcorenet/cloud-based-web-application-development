@@ -37,7 +37,7 @@ const App = () => {
     const onClick = async () => {
         try {
             const response = await axios.get(
-                'http://3.35.219.12222:3000/api',
+                'http://localhost:3001/api',
             );
             setData(response.data);
         } catch (e) {
@@ -92,7 +92,7 @@ const App = () => {
 export default App;
 ```
 
-불러오기 버튼을 클릭하면, JSONPlaceholder에서 제공하는 가짜 API를 호출하고 이에 대한 응답을 컴포넌트 상태에 넣어서 보여주는 예제입니다. 
+불러오기 버튼을 클릭하면 API를 호출하고 이에 대한 응답을 컴포넌트 상태에 넣어서 보여주는 예제입니다. 
 
 > 컴포넌트 상태(state)?
 >
@@ -246,7 +246,7 @@ const sampleArticle = {
 };
 
 
-const AirItem = () => {
+const AirList = () => {
             return (
             <AirListBlock>
             <AirItem article={sampleArticle} />
@@ -261,7 +261,7 @@ const AirItem = () => {
 
 
 
-export default AirItem;
+export default AirList;
 ```
 
 AirList컴포넌트를 렌더링해보기 위해 src디렉터리의 App.js 파일을 다음과 같이 수정합니다. 
@@ -286,7 +286,7 @@ const App = () => {
     const onClick = async () => {
         try {
             const response = await axios.get(
-                'http://3.35.219.122:3000/api?sidoName=경남',
+                'http://localhost:3001/api?sidoName=경남',
             );
             setData(response.data);
         } catch (e) {
@@ -415,7 +415,7 @@ const AirList = () => {
                 setLoading(true);
                 try {
                     const response = await axios.get(
-                    'http://3.35.219.122:3000/api?sidoName=경남',
+                    'http://localhost:3001/api?sidoName=경남',
                         );
                     setArticles(response.data.response.body.items);
                     //console.log(response.data.response.body.items)
@@ -453,6 +453,8 @@ export default AirList;
 컴포넌트가 처음 렌더링 되는 시점에 useEffect으로 axios.get을 사용해 API를 호출합니다. 결과값을 세터함수를 사용하여 articles 상태를 업데이트합니다.  추가로 loading이라는 상태도 관리하여 API요청이 대기 중인지 판별합니다. 요청이 대기 중일때는 loading값이 true가 되고 요청이 끝나면 loading값이 false가 됩니다.  
 
 데이터를 불러와서 대기오염 정보 배열을 map 함수를 사용하여 컴포넌트 배열로 변환하는 과정에서 주의해야 하는 부분이 있습니다. map 함수를 사용하기 전에 해당 값이 현재 null인지 아닌지 검사해야 합니다. 만약 데이터가 없을때 map 함수를 사용하게 되면 렌더링 과정에서 오류가 발생하게 됩니다. 
+
+key값을 설정해주지않으면 에러가 표시되기 때문에, 데이터가 가진 고유값으로 설정해줍니다. 고유값이 없다면 map 함수에 전달되는 콜백 함수의 인수인 index를 사용해도 됩니다. 
 
 브라우저에서 http://localhost:3000/api 으로 다시 접속해보겠습니다. 
 
@@ -568,7 +570,7 @@ const Categories = () => {
             {categories.map(c => (
                 <Category
                           key={c.sidoName}
-                          activeClassName="active"
+                          activeClassName="active" //NavLink가 활성화 되면 적용되는 className
                           exact={c.sidoName === '전국'}
                           to={ c.sidoName === '전국' ? '/api' : `/api/${c.sidoName}`}
 
@@ -600,7 +602,7 @@ import React from 'react';
 import Categories from './Categories';
 import AirList from './AirList';
 
-const NewsPage = ({ match }) => {
+const AirPage = ({ match }) => {
     // 카테고리가 선택되지 않았으면 기본값 전국으로 사용
     const category = match.params.category || '전국';
 
@@ -612,7 +614,7 @@ const NewsPage = ({ match }) => {
     );
 };
 
-export default NewsPage;
+export default AirPage;
 ```
 
 App.js에서 "/api" 요청시 AirList컴포넌트를 렌더링했지만, 카테고리와  AirList 컴포넌트가 포함된 AirPage컴포넌트를 렌더링하도록 수정할 것입니다. src/App.js 파일을 다음과 같이 수정합니다. 
@@ -734,7 +736,7 @@ const AirList = ({category}) => {
                 setLoading(true);
                 try {
                     const response = await axios.get(
-                    `http://3.35.219.122:3000/api?sidoName=${category}`,
+                    `http://localhost:3001/api?sidoName=${category}`,
                         );
                     setArticles(response.data.response.body.items);
                     //console.log(response.data.response.body.items)
