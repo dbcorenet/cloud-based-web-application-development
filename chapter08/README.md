@@ -222,5 +222,13 @@ const {
     }
   };
   run();
-```  
+```
+
+* `node aws-s3-client.js` 명령어 실행
+
+![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter08/images/Screen_Shot_2021-01-28_at_8_39_42_AM.png)
+
+* S3 콘솔에세서 버킷에 파일이 업로드 된 것 확인
+
+![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter08/images/Screen%20Shot%202021-01-28%20at%208.39.30%20AM.png)
 
