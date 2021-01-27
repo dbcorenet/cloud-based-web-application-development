@@ -232,3 +232,41 @@ const {
 
 ![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter08/images/Screen%20Shot%202021-01-28%20at%208.39.30%20AM.png)
 
+## AWS S3 퍼블릭 전환
+
+* AWS S3 콘솔에서 버킷의 **권한** 탭 클기
+
+![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter08/images/Screen%20Shot%202021-01-28%20at%208.42.47%20AM.png)
+
+**편집 버튼 클릭**
+
+![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter08/images/Screen%20Shot%202021-01-28%20at%208.44.21%20AM.png)
+
+* **버킷 액세스 차단 정책** 수정
+
+![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter08/images/Screen%20Shot%202021-01-28%20at%208.45.06%20AM.png)
+
+* **엑세스 제어 목록** 수정 
+![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter08/images/Screen%20Shot%202021-01-28%20at%208.48.48%20AM.png)
+
+* **버킷정책** 
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::hbn-sksong-test/*"
+        }
+    ]
+}
+```
+
+![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter08/images/Screen%20Shot%202021-01-28%20at%208.55.06%20AM.png)
+
+* 버킷에 올린 파일의 링크 클릭하여 퍼블릭 확인
+
+![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter08/images/Screen%20Shot%202021-01-28%20at%208.56.07%20AM.png)
