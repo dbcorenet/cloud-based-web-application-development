@@ -91,3 +91,30 @@ aws ligtsail get-regions
     ]
 }
 ```
+
+## Windows AWS CLI 설치
+
+https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/install-cliv2-windows.html
+
+* AWS CLI MSI v2 다운로드 후 설치
+
+![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter08/images/Screen%20Shot%202021-01-28%20at%207.57.10%20AM.png)
+
+* Windows power shell 에서 다음 명령어 실행
+
+```
+aws configure
+```
+
+* **AWS Access Key ID** : AWSAccessKeyId
+* **AWS Secret Access Key** : AWSSecretKey
+* **Default region name** : ap-northeast-2
+* **Default output format** : json
+
+![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter08/images/Screen_Shot_2021-01-28_at_8_00_47_AM.png)
+
+```
+aws lightsail get-instances
+```
+
+![](https://dbcore-assets-public.s3.ap-northeast-2.amazonaws.com/tutorials/cloud-based-web-application-development/chapter08/images/Screen_Shot_2021-01-28_at_8_03_21_AM.png)
