@@ -193,7 +193,7 @@ const {
   } = require("@aws-sdk/client-s3");
   
   // Set the AWS region
-  const REGION = "ap-notheast-2"; 
+  const REGION = "ap-northeast-2"; 
   
   // Set the bucket parameters
   const bucketName = "hbn-sksong-test";
